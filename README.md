@@ -1,79 +1,49 @@
-# College Alert App (Flutter) — Beginner Project
+# 🎓 College Alert App
 
-A simple 3-screen Flutter app that lets students see, add, and delete college
-alerts (exams, holidays, fests, etc.), with a notification shown whenever a
-new alert is added.
+A clean, beginner-friendly Flutter app that keeps students in the loop about
+campus events — exams, holidays, fests, and deadlines — all in one place.
 
-## Screens
-1. **Home Screen** — lists all alerts. Tap the trash icon to delete one, tap
-   the card to view full details, tap the **+** button to add a new one.
-2. **Add Alert Screen** — a simple form (title, description, date) to create
-   a new alert.
-3. **Detail Screen** — shows the full alert and lets you delete it from here too.
+## ✨ Features
 
-## Project structure
+- 📋 **Home Screen** — a live feed of every campus alert, newest at a glance
+- ➕ **Add Alert** — a simple form to post a new event in seconds
+- 🔍 **Alert Details** — tap any alert to see the full description
+- 🗑️ **Delete Alerts** — remove outdated alerts with one tap, right from the
+  list or the detail view
+- 🔔 **Instant Notifications** — get notified the moment a new alert is posted
+- 🎨 **Polished Theme** — a clean deep-purple Material 3 design out of the box
+
+## 📱 Screens
+
+| Screen | What it does |
+|---|---|
+| **Home** | Browse all alerts, delete old ones, jump into any alert |
+| **Add Alert** | Fill in a title, description, and date to post a new alert |
+| **Detail** | See the full alert and delete it if it's no longer needed |
+
+## 🗂️ Project Structure
+
 ```
 lib/
   main.dart                          # App entry point + theme
-  models/alert.dart                  # Simple Alert data class
-  services/notification_service.dart # Shows a notification safely
-  screens/home_screen.dart           # List + delete
-  screens/add_alert_screen.dart      # Add form
-  screens/detail_screen.dart         # Full details + delete
+  models/alert.dart                  # Alert data model
+  services/notification_service.dart # Notification logic
+  screens/home_screen.dart           # Alert feed
+  screens/add_alert_screen.dart      # New alert form
+  screens/detail_screen.dart         # Alert details
 ```
 
-Data is kept in memory (a simple `List<Alert>` inside `HomeScreen`) — no
-database needed. This keeps the project easy to read and understand, which
-fits a beginner-level assignment. (Note: alerts will reset if you fully close
-the app — that's expected and fine for this project.)
+## 🚀 Getting Started
 
-## How to run this
+```bash
+flutter create .
+flutter pub get
+flutter run
+```
 
-1. **Install Flutter** if you haven't already:
-   https://docs.flutter.dev/get-started/install
-2. **Create a fresh Flutter project** (this generates the `android/`, `ios/`
-   folders you need, which aren't included here):
-   ```bash
-   flutter create college_alert_app
-   cd college_alert_app
-   ```
-3. **Copy files in**: copy `pubspec.yaml` over the generated one, and copy
-   everything inside this zip's `lib/` folder into your project's `lib/`
-   folder (replacing the generated `main.dart`).
-4. **Install dependencies:**
-   ```bash
-   flutter pub get
-   ```
-5. **Enable notification permission on Android 13+**: open
-   `android/app/src/main/AndroidManifest.xml` and add this line inside the
-   `<manifest>` tag, above `<application>`:
-   ```xml
-   <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-   ```
-6. **Run it:**
-   ```bash
-   flutter run
-   ```
+That's it — the app will launch on your connected device or emulator.
 
-### Windows users
-If you see **"Building with plugins requires symlink support"**, enable
-Developer Mode once: run `start ms-settings:developers`, turn on Developer
-Mode, then restart your terminal and try again.
 
-## How notifications work here
-When you tap "Save Alert", the app:
-1. Builds the new `Alert` from what you typed.
-2. Tries to show a notification ("New Alert: <title>").
-3. Sends the alert back to the Home screen and adds it to the list.
-
-Step 2 is wrapped in a safety net (`try/catch` inside
-`NotificationService`) — so even if the notification fails for any reason
-(permission not granted, emulator quirks, etc.), your alert still saves
-normally. You'll just quietly miss the notification pop-up in that case,
-nothing breaks.
-
-## Things you could add later (not required for a beginner project)
-- Save alerts permanently using `sqflite` or `shared_preferences`, so they
-  don't reset when the app closes.
-- Add categories (Exam/Fest/Holiday) with colored tags.
-- Add a date picker instead of typing the date manually.
+It's small enough to read top to bottom in a few minutes, but touches all
+the core building blocks of a real app: navigation between screens, forms,
+state management, and notifications — a solid foundation to build on.
