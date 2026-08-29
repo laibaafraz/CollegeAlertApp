@@ -44,6 +44,3 @@ flutter run
 That's it — the app will launch on your connected device or emulator.
 
 
-It's small enough to read top to bottom in a few minutes, but touches all
-the core building blocks of a real app: navigation between screens, forms,
-state management, and notifications — a solid foundation to build on.
